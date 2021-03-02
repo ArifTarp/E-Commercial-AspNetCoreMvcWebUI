@@ -1,0 +1,36 @@
+﻿@model E_Commercial.UI.Models.ProductListViewModel;
+
+@{
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+
+<h2>Product List</h2>
+<td><a class="btn btn-xs btn-success" asp-controller="Admin" asp-action="AddProduct">Add A New Product</a></td>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Product ID</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Category ID</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Units In Stock</th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.CategoryId</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.UnitsInStock</td>
+                <td><a class="btn btn-xs btn-info" asp-controller="Admin" asp-action="UpdateProduct" asp-route-productId="@item.ProductId">Update</a></td>
+                <td><a class="btn btn-xs btn-danger" asp-controller="Admin" asp-action="DeleteProduct" asp-route-productId="@item.ProductId">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

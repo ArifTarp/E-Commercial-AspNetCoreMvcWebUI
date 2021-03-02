@@ -1,0 +1,51 @@
+﻿@model E_Commercial.UI.Models.CartSummaryViewModel;
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+    var sayac = 1;
+}
+
+<h2>Your Basket</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Units In Stock</th>
+            <th scope="col">Quantity</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cartLine in Model.Cart.CartLines)
+        {
+            <tr>
+                <th scope="row">@sayac</th>
+                <td>@cartLine.Product.ProductName</td>
+                <td>@cartLine.Product.UnitPrice</td>
+                <td>@cartLine.Product.UnitsInStock</td>
+                <td>@cartLine.Quantity</td>
+                <td><a type="button" class="btn btn-danger" asp-controller="Cart" asp-action="Remove" asp-route-productId="@cartLine.Product.ProductId"><i class="fa fa-times" aria-hidden="true"></i> Remove From Basket</a></td>
+            </tr>
+            sayac += 1;
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><h3>Total</h3></td>
+            <td><h3>@Model.Cart.Total</h3></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a type="button" class="btn btn-outline-secondary" asp-controller="Product" asp-action="Index"><i class="fas fa-shopping-cart"></i> Continue Shopping</a></td>
+            <td><a type="button" class="btn btn-outline-info" asp-controller="Cart" asp-action="Complete"><i class="far fa-credit-card"></i> Go To Checkout</a></td>
+        </tr>
+    </tbody>
+</table>
+

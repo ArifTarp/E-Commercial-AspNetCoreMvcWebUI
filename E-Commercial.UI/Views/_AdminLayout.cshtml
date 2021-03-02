@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+@{
+    var currentControllerName = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+    var currentActionName = ViewContext.RouteData.Values["Action"].ToString().ToLower();
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
+
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+                    <a class="navbar-brand" href="/">E-Commercial</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/Admin/Index">Products Store Panel<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/Product/Index">Products Store<span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <div class="btn-group dropleft">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-user"></i> User<span class="caret"></span></a>
+                                    @await Component.InvokeAsync("UserSummary")
+                                </li>
+                            </div>
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                @if (TempData["message"] != null)
+                {
+                    <div class="alert alert-info" role="alert">@TempData["message"]</div>
+                }
+                @if (TempData["NotFoundProduct"] != null)
+                {
+                    <div class="alert alert-warning" role="alert">@TempData["NotFoundProduct"]</div>
+                }
+                @RenderBody()
+            </div>
+        </div>
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2017-2018 Company Name</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Privacy</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Support</a></li>
+            </ul>
+        </footer>
+    </div>
+</body>
+</html>

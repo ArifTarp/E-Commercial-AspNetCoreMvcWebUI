@@ -1,0 +1,36 @@
+﻿@model E_Commercial.UI.Models.ProductAddViewModel;
+
+@{
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Add Product</h2>
+            <form asp-controller="Admin" asp-action="AddProduct" method="post">
+                <div class="form-group">
+                    <label asp-for="Product.ProductName"></label>
+                    <input class="form-control" asp-for="@Model.Product.ProductName" placeholder="Product Name" />
+                    <span asp-validation-for="Product.ProductName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Product.CategoryId"></label>
+                    <select class="form-control" asp-for="@Model.Product.CategoryId" asp-items="@(new SelectList(Model.Categories,"CategoryId","CategoryName"))"></select>
+                    <span asp-validation-for="Product.CategoryId"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Product.UnitPrice"></label>
+                    <input class="form-control" asp-for="@Model.Product.UnitPrice" placeholder="Unit Price" />
+                    <span asp-validation-for="Product.UnitPrice"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Product.UnitsInStock"></label>
+                    <input class="form-control" asp-for="@Model.Product.UnitsInStock" placeholder="Units In Stock" />
+                    <span asp-validation-for="Product.UnitsInStock"></span>
+                </div>
+                <input type="submit" class="btn btn-xs btn-success" value="Add Product" />
+            </form>
+        </div>
+    </div>
+</div>

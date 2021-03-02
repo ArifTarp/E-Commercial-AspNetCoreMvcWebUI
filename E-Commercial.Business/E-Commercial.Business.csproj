@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>E_Commercial.Business</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\E-Commercial.DataAccess\E-Commercial.DataAccess.csproj" />
+    <ProjectReference Include="..\E-Commercial.Entity\E-Commercial.Entity.csproj" />
+  </ItemGroup>
+
+</Project>

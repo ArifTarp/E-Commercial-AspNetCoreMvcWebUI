@@ -1,0 +1,46 @@
+﻿@model E_Commercial.UI.Models.ShippingDetailsViewModel;
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Shipping Details</h2>
+            <form asp-controller="Cart" asp-action="Complete" method="post">
+                <div class="form-group">
+                    <label asp-for="ShippingDetails.FirstName"></label>
+                    <input class="form-control" asp-for="@Model.ShippingDetails.FirstName" placeholder="First Name" />
+                    <span asp-validation-for="ShippingDetails.FirstName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ShippingDetails.LastName"></label>
+                    <input class="form-control" asp-for="@Model.ShippingDetails.LastName" placeholder="Last Name" />
+                    <span asp-validation-for="ShippingDetails.LastName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ShippingDetails.Age"></label>
+                    <input class="form-control" asp-for="@Model.ShippingDetails.Age" placeholder="Age" />
+                    <span asp-validation-for="ShippingDetails.Age"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ShippingDetails.Email"></label>
+                    <input class="form-control" asp-for="@Model.ShippingDetails.Email" placeholder="Email" />
+                    <span asp-validation-for="ShippingDetails.Email"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ShippingDetails.City"></label>
+                    <input class="form-control" asp-for="@Model.ShippingDetails.City" placeholder="City" />
+                    <span asp-validation-for="ShippingDetails.City"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ShippingDetails.Adress"></label>
+                    <input class="form-control" asp-for="@Model.ShippingDetails.Adress" placeholder="Adress" />
+                    <span asp-validation-for="ShippingDetails.Adress"></span>
+                </div>
+                <input type="submit" class="btn btn-xs btn-success" value="Complete Shopping" />
+            </form>
+        </div>
+    </div>
+</div>

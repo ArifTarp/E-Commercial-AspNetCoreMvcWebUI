@@ -1,0 +1,14 @@
+﻿@model E_Commercial.UI.Models.UserDetailsViewModel;
+
+
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+
+    <li>
+        <a class="dropdown-item">Welcome @Model.UserName</a>
+    </li>
+
+    <div class="dropdown-divider"></div>
+    <li>
+        <a class="dropdown-item" asp-controller="Account" asp-action="LogOff"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+    </li>
+</ul>

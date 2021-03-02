@@ -1,0 +1,35 @@
+﻿@model E_Commercial.UI.Models.ProductListViewModel;
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Product ID</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Category ID</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Units In Stock</th>
+        <th scope="col"> </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td>@item.CategoryId</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.UnitsInStock</td>
+            <td><a class="btn btn-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@item.ProductId">Add To Cart</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+<product-list-pager page-count="@Model.PageCount" page-size="@Model.PageSize" current-category-id="@Model.CurrentCategoryId" current-page="@Model.CurrentPage">
+
+</product-list-pager>
